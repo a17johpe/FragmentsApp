@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import org.brohede.marcus.fragmentsapp.dummy.DummyContent;
 import org.json.JSONArray;
@@ -31,7 +32,7 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onListFragmentInteraction(Mountain m) {
-
+        Toast.makeText(getApplicationContext(), m.info(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
