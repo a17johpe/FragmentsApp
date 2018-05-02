@@ -5,7 +5,26 @@ package org.brohede.marcus.fragmentsapp;
  */
 
 public class Mountain {
+    private String name;
+    private String location;
+    private int height;
 
-    // You need to create proper member variables, methods, and constructors
+    public Mountain (String inName, String inLocation, int inHeight) {
+        name = inName;
+        location = inLocation;
+        height = inHeight;
+    }
+    public String info() {
+        String str = location;
+        return str;
+    }
 
+    public String height() {
+        return Integer.toString(height);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
