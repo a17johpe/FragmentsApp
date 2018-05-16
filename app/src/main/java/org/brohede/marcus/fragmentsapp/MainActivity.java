@@ -1,5 +1,6 @@
 package org.brohede.marcus.fragmentsapp;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends FragmentActivity
-    implements MountainDetailsFragment.OnListFragmentInteractionListener {
+    implements MountainDetailsFragment.OnListFragmentInteractionListener, VeryDetailedFragment.OnFragmentInteractionListener {
     private static final String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
@@ -41,7 +42,12 @@ public class MainActivity extends FragmentActivity
 
         // Add the fragment to the 'fragment_container' FrameLayout
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, firstFragment).commit();
+                .replace(R.id.fragment_container, firstFragment).commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     @Override
