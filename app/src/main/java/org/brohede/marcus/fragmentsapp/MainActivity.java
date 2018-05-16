@@ -28,11 +28,20 @@ public class MainActivity extends FragmentActivity
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
     public static final List<Mountain> mountainData = new ArrayList<Mountain>();
-    private ArrayAdapter adapter;
+    protected MountainDetailsFragment firstFragment;
 
     @Override
     public void onListFragmentInteraction(Mountain m) {
         Toast.makeText(getApplicationContext(), m.info(), Toast.LENGTH_SHORT).show();
+        VeryDetailedFragment firstFragment = new VeryDetailedFragment();
+
+        // In case this activity was started with special instructions from an
+        // Intent, pass the Intent's extras to the fragment as arguments
+        firstFragment.setArguments(getIntent().getExtras());
+
+        // Add the fragment to the 'fragment_container' FrameLayout
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, firstFragment).commit();
     }
 
     @Override
@@ -53,7 +62,7 @@ public class MainActivity extends FragmentActivity
             }
 
             // Create a new Fragment to be placed in the activity layout
-            MountainDetailsFragment firstFragment = new MountainDetailsFragment();
+            firstFragment = new MountainDetailsFragment();
 
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
@@ -180,6 +189,7 @@ public class MainActivity extends FragmentActivity
                     mountainData.add(m);
                     Log.d("olle1", "V" + mountainData);
                 }
+                firstFragment.johannasFix();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

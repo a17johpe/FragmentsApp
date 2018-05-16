@@ -28,6 +28,7 @@ public class MountainDetailsFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -63,7 +64,7 @@ public class MountainDetailsFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
@@ -74,7 +75,9 @@ public class MountainDetailsFragment extends Fragment {
         return view;
     }
 
-
+    public void johannasFix() {
+        recyclerView.setAdapter(new MyMountainRecyclerViewAdapter(MainActivity.mountainData, mListener));
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
