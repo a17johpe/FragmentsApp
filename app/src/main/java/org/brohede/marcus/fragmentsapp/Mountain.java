@@ -20,7 +20,7 @@ public class Mountain {
     }
 
     public String height() {
-        return Integer.toString(height);
+        return Integer.toString(height) + " m";
     }
 
     @Override

@@ -160,7 +160,7 @@ public class MainActivity extends FragmentActivity
             // of our newly created Mountain class.
             try {
                 JSONArray json1 = new JSONArray(o);
-                //adapter.clear();
+                mountainData.clear();
 
                 for (int i = 0; i < json1.length(); i++) {
                     JSONObject berg = json1.getJSONObject(i);
