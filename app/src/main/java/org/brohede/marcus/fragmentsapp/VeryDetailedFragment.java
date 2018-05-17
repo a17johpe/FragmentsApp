@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -20,12 +23,14 @@ import android.view.ViewGroup;
 public class VeryDetailedFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String ARG_NAME = "mountain_name";
+    public static final String ARG_LOCATION = "mountain_location";
+    public static final String ARG_HEIGHT = "mountain_height";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mMountain_name;
+    private String mMountain_location;
+    private String mMountain_height;
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,11 +47,13 @@ public class VeryDetailedFragment extends Fragment {
      * @return A new instance of fragment VeryDetailedFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VeryDetailedFragment newInstance(String param1, String param2) {
+    public static VeryDetailedFragment newInstance(String param1, String param2, String param3) {
         VeryDetailedFragment fragment = new VeryDetailedFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_NAME, param1);
+        args.putString(ARG_LOCATION, param2);
+        args.putString(ARG_HEIGHT, param3);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +62,9 @@ public class VeryDetailedFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mMountain_name = getArguments().getString(ARG_NAME);
+            mMountain_location = getArguments().getString(ARG_LOCATION);
+            mMountain_height = getArguments().getString(ARG_HEIGHT);
         }
     }
 
@@ -64,7 +72,17 @@ public class VeryDetailedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_very_detailed, container, false);
+        View view = inflater.inflate(R.layout.fragment_very_detailed, container, false);
+
+        TextView mountainNames = (TextView) view.findViewById(R.id.textview_mountainname);
+        TextView mountainLocations = (TextView) view.findViewById(R.id.textview_mountainlocation);
+        TextView mountainHeight = (TextView) view.findViewById(R.id.textview_mountainheight);
+
+        mountainNames.setText(mMountain_name);
+        mountainLocations.setText(mMountain_location);
+        mountainHeight.setText(mMountain_height);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

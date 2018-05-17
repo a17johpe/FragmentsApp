@@ -14,6 +14,7 @@ public class Mountain {
         location = inLocation;
         height = inHeight;
     }
+
     public String info() {
         String str = location;
         return str;

@@ -3,6 +3,7 @@ package org.brohede.marcus.fragmentsapp;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,16 +34,28 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onListFragmentInteraction(Mountain m) {
-        Toast.makeText(getApplicationContext(), m.info(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), m.info(), Toast.LENGTH_SHORT).show();
+
         VeryDetailedFragment firstFragment = new VeryDetailedFragment();
+
+        Bundle args = new Bundle();
+        args.putString(VeryDetailedFragment.ARG_NAME, m.toString());
+        args.putString(VeryDetailedFragment.ARG_LOCATION, m.info());
+        args.putString(VeryDetailedFragment.ARG_HEIGHT, m.height());
+        firstFragment.setArguments(args);
 
         // In case this activity was started with special instructions from an
         // Intent, pass the Intent's extras to the fragment as arguments
-        firstFragment.setArguments(getIntent().getExtras());
+        //firstFragment.setArguments(getIntent().getExtras());
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fragment_container, firstFragment).commit();
+        transaction.addToBackStack(null);
 
         // Add the fragment to the 'fragment_container' FrameLayout
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, firstFragment).commit();
+        //getSupportFragmentManager().beginTransaction()
+          //      .replace(R.id.fragment_container, firstFragment).commit();
     }
 
     @Override
