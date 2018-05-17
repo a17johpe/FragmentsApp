@@ -1,5 +1,6 @@
 package org.brohede.marcus.fragmentsapp;
 
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
@@ -50,8 +51,17 @@ public class MainActivity extends FragmentActivity
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.fragment_container, firstFragment).commit();
-        transaction.addToBackStack(null);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            transaction.replace(R.id.details_container, firstFragment);
+        }
+        else { // orientation == portrait
+            transaction.replace(R.id.fragment_container, firstFragment);
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
+
+        //transaction.replace(R.id.fragment_container, firstFragment).commit();
+        //transaction.addToBackStack(null);
 
         // Add the fragment to the 'fragment_container' FrameLayout
         //getSupportFragmentManager().beginTransaction()

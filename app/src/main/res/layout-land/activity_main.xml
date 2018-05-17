@@ -23,4 +23,16 @@
 
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/details_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="155dp"
+        app:layout_constraintLeft_toRightOf="@+id/fragment_container"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>
